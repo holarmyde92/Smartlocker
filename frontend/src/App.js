@@ -293,21 +293,12 @@ const Home = () => {
 
       {/* CTA Section */}
       <section className="cta-section" data-testid="cta-section">
-        <h2>Join Hundreds of Event Organizers Using Smart Lockers</h2>
-        <p>Secure your event storage today and give your guests peace of mind.</p>
-        <a href="#contact" className="btn-primary" data-testid="cta-button">Request a Demo</a>
-        <div className="cta-images">
-          <div className="cta-image">
-            <img src={LOCKER_IMAGE_1} alt="Smart Lockers Outdoor" />
-          </div>
-          <div className="cta-image">
-            <img src={LOCKER_IMAGE_2} alt="Smart Lockers Indoor" />
-          </div>
-          <div className="cta-image">
-            <img src={LOCKER_IMAGE_1} alt="Event Lockers" />
-          </div>
-          <div className="cta-image">
-            <img src={LOCKER_IMAGE_2} alt="Secure Storage" />
+        <div className="cta-content">
+          <h2>Ready to Elevate Your Event Experience?</h2>
+          <p>Join hundreds of event organizers who trust Smart Secure Lockers for their storage needs.</p>
+          <div className="cta-buttons">
+            <a href="#contact" className="btn-primary btn-large" data-testid="cta-button">Request a Demo</a>
+            <a href="#features" className="btn-outline">Learn More</a>
           </div>
         </div>
       </section>

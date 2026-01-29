@@ -284,7 +284,7 @@ const Home = () => {
           </div>
           <div className="solutions-content">
             <div className="solutions-image-premium">
-              <img src={LOCKER_IMAGE_1} alt="Smart Secure Lockers" />
+              <img src={LOCKER_IMAGE} alt="Smart Secure Lockers" />
             </div>
             <div className="solutions-list">
               <div className="solution-item" data-testid="solution-checkin">

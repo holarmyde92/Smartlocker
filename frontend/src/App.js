@@ -234,7 +234,7 @@ const Home = () => {
         <div className="features-grid">
           <div className="feature-card" data-testid="feature-card-secure">
             <div className="feature-image">
-              <img src="https://images.unsplash.com/photo-1645318506272-9bb6cb3d0702?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwyfHxldmVudCUyMHN0b3JhZ2UlMjBsb2NrZXJzJTIwc2VjdXJlfGVufDB8fHx8MTc2OTY4NDY5N3ww&ixlib=rb-4.1.0&q=85" alt="Secure Lockers" />
+              <img src={LOCKER_IMAGE_1} alt="Secure Lockers" />
               <div className="feature-label">Secure</div>
             </div>
             <div className="feature-content">
@@ -243,16 +243,16 @@ const Home = () => {
           </div>
           <div className="feature-card" data-testid="feature-card-access">
             <div className="feature-image">
-              <img src="https://images.unsplash.com/photo-1651840403923-c1581f5eec47?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwxfHxldmVudCUyMHN0b3JhZ2UlMjBsb2NrZXJzJTIwc2VjdXJlfGVufDB8fHx8MTc2OTY4NDY5N3ww&ixlib=rb-4.1.0&q=85" alt="Easy Access" />
+              <img src={LOCKER_IMAGE_2} alt="Easy Access" />
               <div className="feature-label">Easy Access</div>
             </div>
             <div className="feature-content">
-              <p>Quick and effortless access for guests via smart codes or mobile app integration.</p>
+              <p>Quick and effortless access for guests via smart codes for seamless experience.</p>
             </div>
           </div>
           <div className="feature-card" data-testid="feature-card-integration">
             <div className="feature-image">
-              <img src="https://images.unsplash.com/photo-1662320154145-7263e998e7a2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHw0fHxldmVudCUyMHN0b3JhZ2UlMjBsb2NrZXJzJTIwc2VjdXJlfGVufDB8fHx8MTc2OTY4NDY5N3ww&ixlib=rb-4.1.0&q=85" alt="Smart Integration" />
+              <img src={LOCKER_IMAGE_1} alt="Smart Integration" />
               <div className="feature-label">Smart Integration</div>
             </div>
             <div className="feature-content">

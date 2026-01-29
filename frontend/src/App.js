@@ -232,32 +232,26 @@ const Home = () => {
           </p>
         </div>
         <div className="features-grid">
-          <div className="feature-card" data-testid="feature-card-secure">
-            <div className="feature-image">
-              <img src={LOCKER_IMAGE_1} alt="Secure Lockers" />
-              <div className="feature-label">Secure</div>
+          <div className="feature-card-minimal" data-testid="feature-card-secure">
+            <div className="feature-icon-wrapper">
+              <span className="feature-icon">🔒</span>
             </div>
-            <div className="feature-content">
-              <p>High-security lockers with personal codes to keep valuables safe during events.</p>
-            </div>
+            <h3>High Security</h3>
+            <p>Personal codes and robust construction keep valuables safe during events.</p>
           </div>
-          <div className="feature-card" data-testid="feature-card-access">
-            <div className="feature-image">
-              <img src={LOCKER_IMAGE_2} alt="Easy Access" />
-              <div className="feature-label">Easy Access</div>
+          <div className="feature-card-minimal" data-testid="feature-card-access">
+            <div className="feature-icon-wrapper">
+              <span className="feature-icon">⚡</span>
             </div>
-            <div className="feature-content">
-              <p>Quick and effortless access for guests via smart codes for seamless experience.</p>
-            </div>
+            <h3>Easy Access</h3>
+            <p>Quick and effortless access for guests via smart codes for seamless experience.</p>
           </div>
-          <div className="feature-card" data-testid="feature-card-integration">
-            <div className="feature-image">
-              <img src={LOCKER_IMAGE_1} alt="Smart Integration" />
-              <div className="feature-label">Smart Integration</div>
+          <div className="feature-card-minimal" data-testid="feature-card-integration">
+            <div className="feature-icon-wrapper">
+              <span className="feature-icon">🔗</span>
             </div>
-            <div className="feature-content">
-              <p>Integrates with event management platforms for seamless check-in and tracking.</p>
-            </div>
+            <h3>Smart Integration</h3>
+            <p>Integrates with event management platforms for seamless check-in and tracking.</p>
           </div>
         </div>
       </section>

@@ -304,16 +304,16 @@ const Home = () => {
         <a href="#contact" className="btn-primary" data-testid="cta-button">Request a Demo</a>
         <div className="cta-images">
           <div className="cta-image">
-            <img src="https://images.unsplash.com/photo-1644959166965-8606f1ce1f06?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwyfHxmZXN0aXZhbCUyMGNvbmNlcnQlMjBjcm93ZCUyMGV2ZW50fGVufDB8fHx8MTc2OTY4NDY5OXww&ixlib=rb-4.1.0&q=85" alt="Festival" />
+            <img src={LOCKER_IMAGE_1} alt="Smart Lockers Outdoor" />
           </div>
           <div className="cta-image">
-            <img src="https://images.unsplash.com/photo-1768448808550-3148cce53a19?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHw0fHxjb25mZXJlbmNlJTIwYnVzaW5lc3MlMjBldmVudCUyMGF0dGVuZGVlc3xlbnwwfHx8fDE3Njk2ODQ3MDF8MA&ixlib=rb-4.1.0&q=85" alt="Conference" />
+            <img src={LOCKER_IMAGE_2} alt="Smart Lockers Indoor" />
           </div>
           <div className="cta-image">
-            <img src="https://images.unsplash.com/photo-1762788109662-1442ea1cdaf3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHxmZXN0aXZhbCUyMGNvbmNlcnQlMjBjcm93ZCUyMGV2ZW50fGVufDB8fHx8MTc2OTY4NDY5OXww&ixlib=rb-4.1.0&q=85" alt="Concert" />
+            <img src={LOCKER_IMAGE_1} alt="Event Lockers" />
           </div>
           <div className="cta-image">
-            <img src="https://images.pexels.com/photos/25752085/pexels-photo-25752085.jpeg" alt="Business Event" />
+            <img src={LOCKER_IMAGE_2} alt="Secure Storage" />
           </div>
         </div>
       </section>

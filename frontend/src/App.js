@@ -27,14 +27,41 @@ const Navigation = () => {
 
   const scrollToSection = (sectionId) => {
     if (!isHomePage) {
+      // Navigate to home page with hash
       window.location.href = `/#${sectionId}`;
       return;
     }
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navHeight = 80; // Account for fixed navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
+
+  // Handle hash navigation on page load
+  useEffect(() => {
+    if (isHomePage && window.location.hash) {
+      const sectionId = window.location.hash.slice(1);
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const navHeight = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    }
+  }, [isHomePage]);
 
   return (
     <>

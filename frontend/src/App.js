@@ -267,25 +267,25 @@ const Home = () => {
             </p>
           </div>
           <div className="solutions-content">
+            <div className="solutions-image-premium">
+              <img src={LOCKER_IMAGE_1} alt="Smart Secure Lockers" />
+            </div>
             <div className="solutions-list">
               <div className="solution-item" data-testid="solution-checkin">
-                <div className="solution-icon">🎟️</div>
+                <div className="solution-number">01</div>
                 <div>
                   <h3>Event Check-in</h3>
                   <p>Streamlined storage check-in for attendees, reducing queues and wait times.</p>
                 </div>
               </div>
               <div className="solution-item" data-testid="solution-storage">
-                <div className="solution-icon">🛡️</div>
+                <div className="solution-number">02</div>
                 <div>
                   <h3>Secure Storage</h3>
                   <p>Lockers equipped with high-security codes and monitoring for peace of mind.</p>
                 </div>
               </div>
               <a href="#contact" className="btn-primary explore-solutions-btn" data-testid="solutions-cta">Request a Demo</a>
-            </div>
-            <div className="solutions-image">
-              <img src={LOCKER_IMAGE_2} alt="Event Lockers" />
             </div>
           </div>
         </div>

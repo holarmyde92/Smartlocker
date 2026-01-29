@@ -189,7 +189,7 @@ const Navigation = () => {
           <li><a href="#solutions" onClick={(e) => { e.preventDefault(); scrollToSection('solutions'); }}>Solutions</a></li>
           <li><a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>Contact</a></li>
           <li style={{ marginTop: '1rem' }}>
-            <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="btn btn-primary btn-lg" style={{ width: '100%' }}>
+            <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="btn btn-primary btn-lg" style={{ width: '100%', color: 'white' }}>
               Get Started
             </a>
           </li>

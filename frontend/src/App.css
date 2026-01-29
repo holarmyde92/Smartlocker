@@ -1039,6 +1039,11 @@ html {
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    .events-showcase {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
 }
 
 @media (max-width: 768px) {

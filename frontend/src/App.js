@@ -288,17 +288,10 @@ const Home = () => {
                   <p>Lockers equipped with high-security codes and monitoring for peace of mind.</p>
                 </div>
               </div>
-              <div className="solution-item" data-testid="solution-mobile">
-                <div className="solution-icon">📱</div>
-                <div>
-                  <h3>Mobile App Integration</h3>
-                  <p>Attendees can access lockers via our app or QR code system for seamless experience.</p>
-                </div>
-              </div>
               <a href="#contact" className="btn-primary explore-solutions-btn" data-testid="solutions-cta">Request a Demo</a>
             </div>
             <div className="solutions-image">
-              <img src="https://images.unsplash.com/photo-1549452026-91574599e7f6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwxfHxmZXN0aXZhbCUyMGNvbmNlcnQlMjBjcm93ZCUyMGV2ZW50fGVufDB8fHx8MTc2OTY4NDY5OXww&ixlib=rb-4.1.0&q=85" alt="Event Solutions" />
+              <img src={LOCKER_IMAGE_2} alt="Event Lockers" />
             </div>
           </div>
         </div>

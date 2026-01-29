@@ -1102,6 +1102,16 @@ html {
     .solutions-image-premium img {
         height: 350px;
     }
+    
+    .events-showcase {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 400px;
+    }
+    
+    .event-image-card {
+        aspect-ratio: 16/9;
+    }
 }
 
 @media (max-width: 480px) {

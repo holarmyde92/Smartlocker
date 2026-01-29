@@ -438,6 +438,17 @@ a {
     background: var(--accent);
 }
 
+.feature-svg-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--accent);
+    transition: all 0.3s ease;
+}
+
+.feature-card-minimal:hover .feature-svg-icon {
+    color: white;
+}
+
 .feature-icon {
     font-size: 2rem;
     transition: all 0.3s ease;

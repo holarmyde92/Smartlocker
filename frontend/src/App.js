@@ -5,6 +5,9 @@ import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-do
 // Logo URL
 const LOGO_URL = "https://customer-assets.emergentagent.com/job_088889e5-4e09-4832-a9ab-ee47810e4742/artifacts/9u1yrvg7_PHOTO-2025-12-18-21-58-23.jpeg";
 
+// Locker Image
+const LOCKER_IMAGE = "https://customer-assets.emergentagent.com/job_secure-locker-8/artifacts/nnxxz388_IMG_5788.jpeg";
+
 // Event Images
 const EVENT_IMAGE_1 = "https://images.unsplash.com/photo-1549452026-91574599e7f6?w=800&q=80"; // Festival crowd
 const EVENT_IMAGE_2 = "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=800&q=80"; // Conference

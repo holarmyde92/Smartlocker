@@ -5,9 +5,10 @@ import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-do
 // Logo URL
 const LOGO_URL = "https://customer-assets.emergentagent.com/job_088889e5-4e09-4832-a9ab-ee47810e4742/artifacts/9u1yrvg7_PHOTO-2025-12-18-21-58-23.jpeg";
 
-// Locker Images
-const LOCKER_IMAGE_1 = "https://customer-assets.emergentagent.com/job_secure-locker-8/artifacts/nnxxz388_IMG_5788.jpeg";
-const LOCKER_IMAGE_2 = "https://customer-assets.emergentagent.com/job_secure-locker-8/artifacts/pgtumfxk_IMG_5787.jpeg";
+// Event Images
+const EVENT_IMAGE_1 = "https://images.unsplash.com/photo-1549452026-91574599e7f6?w=800&q=80"; // Festival crowd
+const EVENT_IMAGE_2 = "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=800&q=80"; // Conference
+const EVENT_IMAGE_3 = "https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?w=800&q=80"; // Auditorium
 
 // Navigation Component
 const Navigation = () => {

@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Secure Lockers - Event Storage Solutions</title>
+<meta name="description" content="Smart Secure Lockers provide innovative storage solutions for conferences, festivals, and events. Secure, easy, and efficient storage for attendees.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+    --primary: #1A202C;
+    --primary-dark: #0F1419;
+    --accent: #14B8A6;
+    --accent-dark: #0D9488;
+    --accent-light: #5EEAD4;
+    --accent-bg: #CCFBF1;
+    --surface: #FFFFFF;
+    --surface-alt: #F8FAFC;
+    --text: #1F2937;
+    --text-muted: #6B7280;
+    --text-light: #9CA3AF;
+    --border: #E5E7EB;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--surface);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--text);
+}
+
+a { text-decoration: none; }
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+nav.scrolled { box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); }
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.btn-primary {
+    background: var(--accent);
+    color: white;
+    padding: 0.7rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+}
+
+.btn-secondary {
+    background: var(--primary);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text);
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu-btn:hover { transform: scale(1.1); }
+
+/* Mobile Navigation */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: white;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav.open { right: 0; }
+
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.mobile-nav-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text);
+    padding: 0.5rem;
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+}
+
+.mobile-nav-links a {
+    color: var(--text);
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.mobile-nav-links a:hover {
+    color: var(--accent);
+    padding-left: 0.5rem;
+}
+
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+}
+
+.hero-background-image {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(30, 27, 75, 0.8)),
+        url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80') center/cover;
+}
+
+.hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-left { color: white; }
+
+.trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 0.6s ease;
+}
+
+.trust-icons {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.trust-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #14B8A6, #0D9488);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: white;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    color: white;
+    animation: fadeInUp 0.6s ease 0.1s both;
+}
+
+.hero h1 .highlight { color: var(--accent-light); }
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 550px;
+    animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    animation: fadeInUp 0.6s ease 0.3s both;
+}
+
+.hero-right {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    animation: fadeInRight 0.8s ease 0.4s both;
+}
+
+.hero-right p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Features Section */
+.features {
+    padding: 7rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: var(--surface);
+}
+
+.section-header { margin-bottom: 4rem; }
+
+.section-label {
+    display: inline-block;
+    background: var(--accent-bg);
+    color: var(--accent-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    margin-bottom: 0.8rem;
+    font-weight: 800;
+}
+
+.section-title .highlight { color: var(--accent); }
+
+.section-description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 650px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.feature-image {
+    height: 250px;
+    background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.feature-card:hover .feature-image img { transform: scale(1.05); }
+
+.feature-label {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background: var(--primary);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.feature-content { padding: 2rem; }
+
+.feature-card p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 0.98rem;
+}
+
+/* Solutions Section */
+.solutions {
+    padding: 7rem 3rem;
+    background: var(--surface-alt);
+}
+
+.solutions-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.solutions-content {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.solutions-image {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.solutions-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.solutions-image:hover img { transform: scale(1.03); }
+
+.solutions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.solution-item {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.solution-item:hover { transform: translateX(8px); }
+
+.solution-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--accent-bg);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.solution-item:hover .solution-icon {
+    background: var(--accent);
+    transform: scale(1.1);
+}
+
+.solution-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+}
+
+.solution-item p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.explore-solutions-btn { margin-top: 2rem; }
+
+/* CTA Section */
+.cta-section {
+    padding: 6rem 3rem;
+    background: var(--surface);
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+}
+
+.cta-images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-image {
+    aspect-ratio: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: var(--surface-alt);
+    transition: transform 0.4s ease;
+}
+
+.cta-image:hover { transform: scale(1.05); }
+
+.cta-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Contact Section */
+.contact {
+    padding: 7rem 3rem;
+    background: var(--accent);
+}
+
+.contact-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: start;
+}
+
+.contact-info { color: white; }
+
+.contact-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.contact-info > p {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    opacity: 0.95;
+    line-height: 1.7;
+}
+
+.contact-item { margin-bottom: 1.5rem; }
+
+.contact-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.contact-item p {
+    font-size: 1rem;
+    color: white;
+    opacity: 0.9;
+}
+
+.contact-form {
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.form-group { margin-bottom: 1.5rem; }
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    background: var(--surface);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-btn {
+    width: 100%;
+    background: var(--accent);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+}
+
+/* Footer */
+footer {
+    background: var(--primary);
+    color: white;
+    padding: 4rem 3rem 2rem;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
+}
+
+.footer-brand .logo-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.footer-brand .logo-text {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.footer-description {
+    opacity: 0.85;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.newsletter-title {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+.newsletter-form input::placeholder { color: rgba(255, 255, 255, 0.5); }
+
+.newsletter-form button {
+    padding: 0.7rem 1.2rem;
+    background: var(--accent);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover { background: var(--accent-dark); }
+
+.footer-links h4 {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.footer-links ul { list-style: none; }
+
+.footer-links li { margin-bottom: 0.7rem; }
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 0.92rem;
+}
+
+.footer-links a:hover { color: var(--accent-light); }
+
+.footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-bottom-links a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+}
+
+.footer-bottom-links a:hover { color: var(--accent-light); }
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.social-link:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Legal Pages */
+.legal-page {
+    min-height: 100vh;
+    padding-top: 100px;
+    background: var(--surface-alt);
+}
+
+.legal-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+.legal-header { margin-bottom: 3rem; }
+
+.legal-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.legal-header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.legal-content {
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.legal-content h2 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.legal-content h2:first-child { margin-top: 0; }
+
+.legal-content h3 {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.legal-content p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.legal-content ul,
+.legal-content ol {
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.legal-content li { margin-bottom: 0.5rem; }
+
+.legal-content a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.legal-content a:hover { color: var(--accent-dark); }
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    transition: all 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--accent-dark);
+    gap: 0.8rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+html { scroll-behavior: smooth; }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-content,
+    .solutions-content,
+    .contact-container { grid-template-columns: 1fr; gap: 3rem; }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-content { grid-template-columns: repeat(2, 1fr); }
+    .cta-images { grid-template-columns: repeat(2, 1fr); }
+    .solutions-image img { height: 400px; }
+}
+
+@media (max-width: 768px) {
+    .nav-container { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .mobile-menu-btn { display: block; }
+    .hero-content, .solutions-content, .contact-container { padding: 0 1.5rem; }
+    .features, .solutions, .contact, .cta-section { padding: 4rem 1.5rem; }
+    .features-grid { grid-template-columns: 1fr; }
+    .footer-content { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .cta-images { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .legal-container { padding: 1.5rem; }
+    .legal-content { padding: 2rem; }
+}
+
+@media (max-width: 480px) {
+    .hero h1 { font-size: 2.2rem; }
+    .hero-cta { flex-direction: column; align-items: stretch; }
+    .hero-cta .btn-primary, .hero-cta .btn-secondary { width: 100%; justify-content: center; }
+    .contact-form { padding: 2rem; }
+    .cta-images { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<!-- Navigation -->
+<nav id="navbar">
+    <div class="nav-container">
+        <a href="#home" class="logo">
+            <img src="https://customer-assets.emergentagent.com/job_088889e5-4e09-4832-a9ab-ee47810e4742/artifacts/9u1yrvg7_PHOTO-2025-12-18-21-58-23.jpeg" alt="Smart Secure Lockers" class="logo-icon">
+            <span class="logo-text">Smart Secure Lockers</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact" class="btn-primary">Get Started</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+    </div>
+</nav>
+
+<!-- Mobile Navigation -->
+<div class="mobile-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+<div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+        <a href="#home" class="logo">
+            <img src="https://customer-assets.emergentagent.com/job_088889e5-4e09-4832-a9ab-ee47810e4742/artifacts/9u1yrvg7_PHOTO-2025-12-18-21-58-23.jpeg" alt="Smart Secure Lockers" class="logo-icon">
+            <span class="logo-text">SSL</span>
+        </a>
+        <button class="mobile-nav-close" onclick="toggleMobileMenu()">✕</button>
+    </div>
+    <ul class="mobile-nav-links">
+        <li><a href="#home" onclick="toggleMobileMenu()">Home</a></li>
+        <li><a href="#features" onclick="toggleMobileMenu()">Features</a></li>
+        <li><a href="#solutions" onclick="toggleMobileMenu()">Solutions</a></li>
+        <li><a href="#contact" onclick="toggleMobileMenu()">Contact</a></li>
+        <li><a href="#contact" class="btn-primary" style="display: inline-block; margin-top: 1rem;" onclick="toggleMobileMenu()">Get Started</a></li>
+    </ul>
+</div>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-background-image"></div>
+    <div class="hero-content">
+        <div class="hero-left">
+            <div class="trust-badge">
+                <div class="trust-icons">
+                    <div class="trust-icon">⭐</div>
+                    <div class="trust-icon">🚀</div>
+                </div>
+                Trusted by Event Planners Worldwide
+            </div>
+            <h1>Secure & <span class="highlight">Smart Storage</span> for Your Events</h1>
+            <p class="hero-subtitle">Provide your guests with a safe, easy, and modern locker solution that ensures their belongings are protected while enjoying events.</p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn-primary">Get Started</a>
+                <a href="#features" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <p>Smart Secure Lockers provide innovative solutions for conferences, festivals, and events, ensuring secure storage and seamless access for every attendee.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features">
+    <div class="section-header">
+        <span class="section-label">Features</span>
+        <h2 class="section-title">Why Choose <span class="highlight">Smart Lockers</span>?</h2>
+        <p class="section-description">Our lockers are designed to provide convenience, security, and peace of mind for event organizers and attendees alike.</p>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-image">
+                <img src="https://customer-assets.emergentagent.com/job_secure-locker-8/artifacts/nnxxz388_IMG_5788.jpeg" alt="Secure Lockers">
+                <div class="feature-label">Secure</div>
+            </div>
+            <div class="feature-content">
+                <p>High-security lockers with personal codes to keep valuables safe during events.</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-image">
+                <img src="https://customer-assets.emergentagent.com/job_secure-locker-8/artifacts/pgtumfxk_IMG_5787.jpeg" alt="Easy Access">
+                <div class="feature-label">Easy Access</div>
+            </div>
+            <div class="feature-content">
+                <p>Quick and effortless access for guests via smart codes for seamless experience.</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-image">
+                <img src="https://customer-assets.emergentagent.com/job_secure-locker-8/artifacts/nnxxz388_IMG_5788.jpeg" alt="Smart Integration">
+                <div class="feature-label">Smart Integration</div>
+            </div>
+            <div class="feature-content">
+                <p>Integrates with event management platforms for seamless check-in and tracking.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solutions Section -->
+<section id="solutions" class="solutions">
+    <div class="solutions-container">
+        <div class="section-header">
+            <span class="section-label">Solutions</span>
+            <h2 class="section-title">Tailored Solutions for Every Event</h2>
+            <p class="section-description">From small gatherings to large festivals, our lockers adapt to your event's needs.</p>
+        </div>
+        <div class="solutions-content">
+            <div class="solutions-list">
+                <div class="solution-item">
+                    <div class="solution-icon">🎟️</div>
+                    <div>
+                        <h3>Event Check-in</h3>
+                        <p>Streamlined storage check-in for attendees, reducing queues and wait times.</p>
+                    </div>
+                </div>
+                <div class="solution-item">
+                    <div class="solution-icon">🛡️</div>
+                    <div>
+                        <h3>Secure Storage</h3>
+                        <p>Lockers equipped with high-security codes and monitoring for peace of mind.</p>
+                    </div>
+                </div>
+                <a href="#contact" class="btn-primary explore-solutions-btn">Request a Demo</a>
+            </div>
+            <div class="solutions-image">
+                <img src="https://customer-assets.emergentagent.com/job_secure-locker-8/artifacts/pgtumfxk_IMG_5787.jpeg" alt="Event Lockers">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <h2>Join Hundreds of Event Organizers Using Smart Lockers</h2>
+    <p>Secure your event storage today and give your guests peace of mind.</p>
+    <a href="#contact" class="btn-primary">Request a Demo</a>
+    <div class="cta-images">
+        <div class="cta-image">
+            <img src="https://customer-assets.emergentagent.com/job_secure-locker-8/artifacts/nnxxz388_IMG_5788.jpeg" alt="Smart Lockers Outdoor">
+        </div>
+        <div class="cta-image">
+            <img src="https://customer-assets.emergentagent.com/job_secure-locker-8/artifacts/pgtumfxk_IMG_5787.jpeg" alt="Smart Lockers Indoor">
+        </div>
+        <div class="cta-image">
+            <img src="https://customer-assets.emergentagent.com/job_secure-locker-8/artifacts/nnxxz388_IMG_5788.jpeg" alt="Event Lockers">
+        </div>
+        <div class="cta-image">
+            <img src="https://customer-assets.emergentagent.com/job_secure-locker-8/artifacts/pgtumfxk_IMG_5787.jpeg" alt="Secure Storage">
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>Want to see our lockers in action or request a personalized demo? Fill the form and our team will reach out promptly.</p>
+            <div class="contact-item">
+                <h3>Email</h3>
+                <p>smartsecurelockers@gmail.com</p>
+            </div>
+            <div class="contact-item">
+                <h3>Phone</h3>
+                <p>+49 176 23969218</p>
+            </div>
+            <div class="contact-item">
+                <h3>Location</h3>
+                <p>Bielefeld, Germany</p>
+            </div>
+        </div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <h3>Request a Demo</h3>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="company">Company / Event Name</label>
+                <input type="text" id="company" placeholder="Company or Event">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Tell us more..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Request</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div>
+            <div class="footer-brand">
+                <img src="https://customer-assets.emergentagent.com/job_088889e5-4e09-4832-a9ab-ee47810e4742/artifacts/9u1yrvg7_PHOTO-2025-12-18-21-58-23.jpeg" alt="Smart Secure Lockers" class="logo-icon">
+                <span class="logo-text">Smart Secure Lockers</span>
+            </div>
+            <p class="footer-description">Providing reliable and smart locker solutions for events worldwide. Secure, easy, and efficient storage for attendees.</p>
+            <div class="newsletter-title">Subscribe for Updates</div>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                <input type="email" placeholder="Your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        <div class="footer-links">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-of-service.html">Terms of Service</a></li>
+                <li><a href="imprint.html">Imprint</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link">F</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link">T</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link">I</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">L</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2026 Smart Secure Lockers. All rights reserved.</span>
+        <div class="footer-bottom-links">
+            <a href="privacy-policy.html">Privacy</a>
+            <a href="terms-of-service.html">Terms</a>
+            <a href="imprint.html">Imprint</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+function toggleMobileMenu() {
+    document.getElementById('mobileNav').classList.toggle('open');
+    document.getElementById('mobileOverlay').classList.toggle('open');
+}
+
+// Scroll handler for navbar
+window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Form submission handler
+function handleSubmit(event) {
+    event.preventDefault();
+    alert('Thank you for your inquiry! We will contact you soon.');
+    event.target.reset();
+}
+</script>
+</body>
+</html>

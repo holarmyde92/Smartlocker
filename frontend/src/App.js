@@ -234,21 +234,33 @@ const Home = () => {
         <div className="features-grid">
           <div className="feature-card-minimal" data-testid="feature-card-secure">
             <div className="feature-icon-wrapper">
-              <span className="feature-icon">🔒</span>
+              <svg className="feature-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                <circle cx="12" cy="16" r="1"></circle>
+              </svg>
             </div>
             <h3>High Security</h3>
             <p>Personal codes and robust construction keep valuables safe during events.</p>
           </div>
           <div className="feature-card-minimal" data-testid="feature-card-access">
             <div className="feature-icon-wrapper">
-              <span className="feature-icon">⚡</span>
+              <svg className="feature-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
             </div>
             <h3>Easy Access</h3>
             <p>Quick and effortless access for guests via smart codes for seamless experience.</p>
           </div>
           <div className="feature-card-minimal" data-testid="feature-card-integration">
             <div className="feature-icon-wrapper">
-              <span className="feature-icon">🔗</span>
+              <svg className="feature-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+                <path d="M7 8h2m2 0h2m2 0h2"></path>
+                <path d="M7 12h10"></path>
+              </svg>
             </div>
             <h3>Smart Integration</h3>
             <p>Integrates with event management platforms for seamless check-in and tracking.</p>

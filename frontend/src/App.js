@@ -317,6 +317,20 @@ const Home = () => {
             <a href="#features" className="btn-outline">Learn More</a>
           </div>
         </div>
+        <div className="events-showcase">
+          <div className="event-image-card">
+            <img src={EVENT_IMAGE_1} alt="Music Festival" />
+            <span className="event-label">Festivals</span>
+          </div>
+          <div className="event-image-card">
+            <img src={EVENT_IMAGE_2} alt="Conference" />
+            <span className="event-label">Conferences</span>
+          </div>
+          <div className="event-image-card">
+            <img src={EVENT_IMAGE_3} alt="Corporate Events" />
+            <span className="event-label">Corporate Events</span>
+          </div>
+        </div>
       </section>
 
       {/* Contact Section */}
